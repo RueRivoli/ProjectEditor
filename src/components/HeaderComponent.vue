@@ -4,17 +4,20 @@
         <el-button type="primary" size="mini" @click="dialogFormVisible = true">Login</el-button>
     </el-header>
         <el-dialog title="Login" :visible.sync="dialogFormVisible">
-          <el-form :model="form">
+          <!-- <div class="google-btn">
+            <p class="btn-text"><b>Login with Google</b></p>
+        </div> -->
+          <el-form :model="registration" >
             <el-form-item label="Username" :label-width="formLabelWidth">
-              <el-input v-model="form.username" autocomplete="off"></el-input>
+              <el-input v-model="registration.username" autocomplete="off"></el-input>
             </el-form-item>
            <el-form-item label="Password" :label-width="formLabelWidth">
-            <el-input v-model="form.password" autocomplete="off"></el-input>
+            <el-input :show-password="true" v-model="registration.password" required autocomplete="off"></el-input>
           </el-form-item>
         </el-form>
         <span slot="footer" class="dialog-footer">
           <el-button @click="dialogFormVisible = false">Annuler</el-button>
-          <el-button type="primary" @click="dialogFormVisible = false">Login</el-button>
+          <el-button type="primary"  @click="login()">Login</el-button>
         </span>
       </el-dialog>
    </div>
@@ -22,17 +25,38 @@
 
 <script>
 
+import AuthService from './../Service/AuthService'
+
 export default {
   name: 'HeaderComponent',
   data () {
     return {
       dialogFormVisible: false,
       formLabelWidth: '150px',
-      form: {
+      registration: {
         username: '',
         password: ''
 
       }
+    }
+  },
+  methods: {
+    login () {
+      let context = this
+      // AuthService.logUser(this.registration).then(function (data) {
+      //   console.log('RETOUR LOGIN')
+      //   console.log(data)
+      //   context.dialogFormVisible = false
+      // })
+      AuthService.logUser(this.registration).then(function (data) {
+        console.log('RETOUR LOGIN')
+        console.log(data)
+        context.dialogFormVisible = false
+      })
+      // AuthService.getProjects(this.registration.username).then(function (data) {
+      //   console.log('RETOUR PROJETS')
+      //   console.log(data)
+      // })
     }
   }
 }

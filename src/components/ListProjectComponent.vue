@@ -1,6 +1,9 @@
 <template>
   <div>
     <header-component/>
+    <el-main>
+      <table-component/>
+    </el-main>
   </div>
 </template>
 
@@ -9,7 +12,7 @@ import HeaderComponent from './HeaderComponent'
 import TableComponent from './TableComponent'
 
 export default {
-  name: 'LayoutComponent',
+  name: 'ListProjectComponent',
   components: { HeaderComponent, TableComponent },
   data () {
     return {
