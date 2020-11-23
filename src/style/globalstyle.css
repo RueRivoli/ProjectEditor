@@ -1,0 +1,20 @@
+.pointer:hover{
+  cursor:pointer;
+}
+
+.aliceblue{
+    background-color: aliceblue;
+}
+
+.antiquewhite{
+    background-color: antiquewhite;
+}
+
+
+.dark_1{
+    background-color: grey;
+}
+
+tr{
+    height:40px;
+}
