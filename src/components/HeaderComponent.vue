@@ -4,10 +4,7 @@
         <el-button type="primary" size="mini" @click="dialogFormVisible = true">Login</el-button>
     </el-header>
         <el-dialog title="Login" :visible.sync="dialogFormVisible">
-          <!-- <div class="google-btn">
-            <p class="btn-text"><b>Login with Google</b></p>
-        </div> -->
-          <el-form :model="registration" >
+          <el-form :model="registration">
             <el-form-item label="Username" :label-width="formLabelWidth">
               <el-input v-model="registration.username" autocomplete="off"></el-input>
             </el-form-item>
@@ -43,20 +40,15 @@ export default {
   methods: {
     login () {
       let context = this
-      // AuthService.logUser(this.registration).then(function (data) {
-      //   console.log('RETOUR LOGIN')
-      //   console.log(data)
-      //   context.dialogFormVisible = false
-      // })
       AuthService.logUser(this.registration).then(function (data) {
         console.log('RETOUR LOGIN')
         console.log(data)
+        if (data.status === 201) {
+          localStorage.token = data.data.token
+          context.$store.commit('TOKEN', true)
+        }
         context.dialogFormVisible = false
       })
-      // AuthService.getProjects(this.registration.username).then(function (data) {
-      //   console.log('RETOUR PROJETS')
-      //   console.log(data)
-      // })
     }
   }
 }
