@@ -10,9 +10,11 @@ import 'element-ui/lib/theme-chalk/index.css'
 import './style/globalstyle.css'
 import './style/google.css'
 import store from './store/'
+import moment from 'moment'
 
 Vue.use(ElementUI)
 Vue.use(Vuex)
+Vue.use(moment)
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

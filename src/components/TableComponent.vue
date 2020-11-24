@@ -9,13 +9,15 @@
             <tr :key="index" :class="{'aliceblue' : index % 2 === 0, 'antiquewhite': index % 2 === 1 }">
               <td class="center">{{ pj.id }}</td>
               <td class="center">{{ pj.name }}</td>
-              <td class="center">{{ pj.time }}</td>
+              <td class="center">{{ format(pj.updated_at) }}</td>
             </tr>
         </template>
     </table>
 </template>
 
 <script>
+import ProjectService from './../Service/ProjectService'
+import moment from 'moment';
 
 export default {
   name: 'TableComponent',
@@ -35,6 +37,23 @@ export default {
           id: 4, name: 'Project 4', time: 'one week ago'
         }
       ]
+    }
+  },
+  async created () {
+    let context = this
+    ProjectService.getProjects().then(function (pjs) {
+      if (pjs.data) {
+        console.log('PROJECTS')
+        console.log(pjs)
+        context.projects = pjs.data
+      }
+    }).catch(function (err) {
+      console.log(err)
+    })
+  },
+  methods: {
+    format (date) {
+      return moment(date).fromNow()
     }
   }
 }
