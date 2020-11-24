@@ -1,14 +1,23 @@
 <template>
       <table style="width:100%;border-collapse:collapse;font-size:13px;font-weight:light;" >
+         <el-button type="primary" size="mini" @click="getList()" plain><i class="material-icons small">refresh</i>Refresh</el-button>
         <tr class="light">
-          <th class="center">ID</th>
-          <th class="center">Project Name</th>
-          <th class="center">Update time</th>
+          <th class="center" style="width:100px;">Actions</th>
+          <th class="center" style="width:400px;">Project Name</th>
+          <th class="center" style="width:300px;">Update time</th>
         </tr>
         <template v-for="(pj, index) in projects" >
             <tr :key="index" :class="{'aliceblue' : index % 2 === 0, 'antiquewhite': index % 2 === 1 }">
-              <td class="center">{{ pj.id }}</td>
-              <td class="center">{{ pj.name }}</td>
+              <td class="center" @click="editName(pj, index)">
+                  <i v-if="editItem !== index" class="material-icons mysize pointer">edit</i>
+                  <i v-else class="material-icons big pointer">save</i>
+              </td>
+              <td class="center">
+                <span v-if="editItem === index">
+                  <el-input :id="`name`+ `${index}`" placeholder="" size="mini" style="width:250px;" v-model="pj.name"></el-input>
+                </span>
+                <span v-else>{{ pj.name }}</span>
+              </td>
               <td class="center">{{ format(pj.updated_at) }}</td>
             </tr>
         </template>
@@ -17,55 +26,66 @@
 
 <script>
 import ProjectService from './../Service/ProjectService'
-import moment from 'moment';
+import moment from 'moment'
 
 export default {
   name: 'TableComponent',
   data () {
     return {
-      projects: [
-        {
-          id: 1, name: 'Project 1', time: 'three days ago'
-        },
-        {
-          id: 2, name: 'Project 3', time: 'one month ago'
-        },
-        {
-          id: 3, name: 'Project 3', time: 'two weeks ago'
-        },
-        {
-          id: 4, name: 'Project 4', time: 'one week ago'
-        }
-      ]
+      projects: [],
+      editItem: null
     }
   },
   async created () {
-    let context = this
-    ProjectService.getProjects().then(function (pjs) {
-      if (pjs.data) {
-        console.log('PROJECTS')
-        console.log(pjs)
-        context.projects = pjs.data
-      }
-    }).catch(function (err) {
-      console.log(err)
-    })
+    this.getList()
   },
   methods: {
     format (date) {
       return moment(date).fromNow()
+    },
+    async getList () {
+      let context = this
+      ProjectService.getProjects().then(function (projects) {
+        if (projects.data) {
+          context.projects = projects.data
+        }
+      }).catch(function (err) {
+        console.log(err)
+      })
+    },
+    async editName (pj, index) {
+      console.log('changeIndex')
+      console.log(this.editItem)
+      if (this.editItem || this.editItem === 0) {
+        let id = 'name' + index
+        let newName = document.getElementById(id).value
+        let payload = {
+          id: pj.id,
+          name: newName
+        }
+        console.log('PAYLOAD ' + payload.id + ' ' + payload.name)
+        this.changeName(payload)
+      } else this.editItem = index
+    },
+    async changeName (payload) {
+      let context = this
+      ProjectService.updateProject(payload).then(function (projects) {
+        if (projects.data) {
+          context.projects[context.editItem].updated_at = projects.data.updated_at
+        }
+        context.editItem = null
+      }).catch(function (err) {
+        console.log(err)
+      })
     }
   }
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-
 <style scoped>
-    center{
-        text-align: center;
+    i.big {font-size: 1.5em;}
+    i.small {
+      font-size: 1.0em;
+      margin-right:2px;
     }
-   /* tr{
-    border-bottom:1px solid black;
-    } */
 </style>

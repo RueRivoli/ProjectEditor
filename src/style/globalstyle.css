@@ -2,14 +2,23 @@
   cursor:pointer;
 }
 
+
+
+tr{
+    height:40px;
+}
+
+center{
+    text-align: center;
+}
+
+
+/* Background colors */
+
 .aliceblue{
     background-color: aliceblue;
 }
 
 .antiquewhite{
     background-color: antiquewhite;
-}
-
-tr{
-    height:40px;
 }

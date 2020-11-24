@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-header class="header pointer">
-      <el-button v-if="authentificated" type="warning" size="mini">Logout</el-button>
+      <el-button v-if="authentificated" type="warning" size="mini" @click="logOut()">Log out</el-button>
       <el-button v-else type="primary" size="mini" @click="dialogFormVisible = true">Login</el-button>
     </el-header>
     <el-dialog title="Login" :visible.sync="dialogFormVisible">
@@ -58,6 +58,10 @@ export default {
         }
         context.dialogFormVisible = false
       })
+    },
+    logOut () {
+      localStorage.token = ''
+      this.$store.commit('AUTH', false)
     }
   }
 }
