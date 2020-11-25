@@ -1,6 +1,5 @@
 const getters = {
-  GET_AUTH: (state) => state.authentificated,
-  GET_USERNAME: (state) => state.username
+  GET_AUTH: (state) => state.authenticated
 }
 
 export default getters

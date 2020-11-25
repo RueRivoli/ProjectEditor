@@ -8,8 +8,7 @@ import createPersistedState from 'vuex-persistedstate'
 Vue.use(Vuex)
 
 const state = {
-  authentificated: false,
-  username: ''
+  authenticated: false,
 }
 
 export default new Vuex.Store({

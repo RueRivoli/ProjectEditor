@@ -1,8 +1,9 @@
 <template>
   <div>
     <header-component/>
-    <el-main>
-      <table-component v-if="authentificated"/>
+    <el-main :class="{'all_screen': authenticated}" style="border: 1px solid black;">
+      <table-component v-if="authenticated"/>
+      <span id="message" v-else>Welcome to this projects editor, you can log in on the top-right corner</span>
     </el-main>
   </div>
 </template>
@@ -10,9 +11,7 @@
 <script>
 import HeaderComponent from './HeaderComponent'
 import TableComponent from './TableComponent'
-import {
-  mapGetters
-} from 'vuex'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'LayoutComponent',
@@ -24,14 +23,13 @@ export default {
   computed: {
     ...mapGetters({
       username: 'GET_USERNAME',
-      authentificated: 'GET_AUTH'
+      authenticated: 'GET_AUTH'
     })
   }
 
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-
 <style>
+
 </style>

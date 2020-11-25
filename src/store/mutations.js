@@ -1,9 +1,6 @@
 const mutations = {
   AUTH: (state, bl) => {
-    state.authentificated = bl
-  },
-  USERNAME: (state, username) => {
-    state.username = username
+    state.authenticated = bl
   }
 }
 

@@ -1,11 +1,16 @@
+/* cursor */
+
 .pointer:hover{
   cursor:pointer;
 }
 
 
-
 tr{
     height:40px;
+}
+
+tr:hover{
+    opacity: 0.8;
 }
 
 center{
@@ -21,4 +26,28 @@ center{
 
 .antiquewhite{
     background-color: antiquewhite;
+}
+
+/* Icones */
+
+i.big {font-size: 1.5em;}
+i.mini {
+    font-size: 0.8em;
+    margin-right:2px;
+  }
+i.small {
+  font-size: 1.2em;
+  margin-right:2px;
+}
+
+/* Positions */
+
+.float-l{
+  float:left;
+}
+
+/* Height */
+
+.all_screen{
+  height: 90vh;
 }
