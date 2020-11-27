@@ -42,7 +42,7 @@ describe('When users is logged out', () => {
   })
 })
 
-describe('When users is logged in', () => {
+describe('When user is logged in', () => {
   let getters = {
     GET_AUTH: (state) => true
   }

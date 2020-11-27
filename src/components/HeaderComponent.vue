@@ -15,7 +15,7 @@
         </el-form-item>
       </el-form>
       <span slot="footer" class="dialog-footer">
-        <el-button @click="dialogFormVisible = false">Annuler</el-button>
+        <el-button id="cancel" @click="dialogFormVisible = false">Annuler</el-button>
         <el-button id="submit" type="text" @click="login()">Login</el-button>
       </span>
     </el-dialog>

@@ -15,4 +15,4 @@ describe('Test getters of store', () => {
       }
       expect(getters.GET_AUTH(state)).toBe(false)
     })
-}
+})

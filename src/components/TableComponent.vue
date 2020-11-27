@@ -3,9 +3,9 @@
       <div style="height:80vh;">
           <table style="width:100%;border-collapse:collapse;font-size:13px;font-weight:light;">
               <tr style="margin-bottom:5px;">
-                <el-button  size="mini" @click="getList()" round><i class="material-icons mini">refresh</i>Refresh</el-button>
+                <el-button id="refresh" size="mini" @click="getList()" round><i class="material-icons mini">refresh</i>Refresh</el-button>
             </tr>
-            <tr class="light head">
+            <tr id="header" class="light head">
               <th class="center" style="width:100px;">Actions</th>
               <th class="center" style="width:400px;">Project Name</th>
               <th class="center" style="width:300px;">Update time</th>
@@ -52,7 +52,7 @@ export default {
   },
   computed: {
     projectDisplayed: function () {
-      let firstProject = this.current_page + (this.current_page - 1) * 10
+      let firstProject = this.current_page - 1 + (this.current_page - 1) * 10
       return this.projects.slice(firstProject, firstProject + 10)
     }
   },
@@ -63,8 +63,6 @@ export default {
     async getList () {
       let context = this
       ProjectService.getProjects().then(function (projects) {
-        console.log('PROJECTS')
-        console.log(projects)
         if (projects.data) {
           context.projects = projects.data
           context.totalProjects = projects.data.length
