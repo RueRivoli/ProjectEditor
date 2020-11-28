@@ -14,15 +14,15 @@ describe('When users is logged out', () => {
   const wrapper = shallowMount(TableComponent,
     {
       data () {
-          return {
+        return {
           projects: [{id: 1, name: 'Name', updated_at: '2020-20-11'}],
           totalProject: 1
-           }
-        },
+        }
+      },
       localVue
     })
-    jest.mock('axios')
-    axios.get.mockResolvedValue({
+  jest.mock('axios')
+  axios.get.mockResolvedValue({
     data: [
       {
         userId: 1,

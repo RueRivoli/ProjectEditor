@@ -22,7 +22,7 @@
                     </span>
                     <span v-else>{{ pj.name }}</span>
                   </td>
-                  <td class="center">{{ format(pj.updated_at) }}</td>
+                   <td class="center">{{ pj.updated_at | format }}</td>
                 </tr>
             </template>
         </table>
@@ -56,10 +56,12 @@ export default {
       return this.projects.slice(firstProject, firstProject + 10)
     }
   },
-  methods: {
+  filters: {
     format (date) {
       return moment(date).fromNow()
-    },
+    }
+  },
+  methods: {
     async getList () {
       let context = this
       ProjectService.getProjects().then(function (projects) {

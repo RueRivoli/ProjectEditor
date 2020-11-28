@@ -37,7 +37,7 @@ describe('When user is logged out', () => {
     const header = wrapper.find('header')
     expect(header.text()).toContain('Login')
   })
-  
+
   it('Login part exists', () => {
     const login = wrapper.find('#login')
     expect(login.exists())
@@ -47,7 +47,7 @@ describe('When user is logged out', () => {
     const button = wrapper.find('button')
     expect(button.exists())
   })
-  
+
   it('When clicking on login button, a dialog pops out', async () => {
     const dialog = wrapper.find('.el-dialog')
     const button = wrapper.find('button')
@@ -70,9 +70,9 @@ describe('Login function is called', () => {
 })
 
 describe('Cancel button works', () => {
-    it('Cancel button works', async () => {
+  it('Cancel button works', async () => {
     // Click on login button
-      
+
     const button = wrapper.find('button')
     await button.trigger('click')
     const cancelButton = wrapper.find('#cancel')
@@ -87,7 +87,7 @@ describe('If user enters invalid password', () => {
     // Click on login button
     const button = wrapper.find('button')
     await button.trigger('click')
-  
+
     // Fill with empty username and password
     let username = wrapper.find('input[type=text]')
     await username.setValue('')
@@ -130,14 +130,14 @@ describe('If user enters invalid password', () => {
     await username.setValue('Username')
     await paswd.setValue('IncorrectPassword-')
     await wrapper.find('#submit').trigger('click')
-    expect(passwordError.exists())  
+    expect(passwordError.exists())
     expect(passwordError.text()).toBe('Between 6 and 30 characters, at least one uppercase, one lowercase, one figure, a special character among -+!*$@%_')
 
     // if password is too short
     await username.setValue('Username')
     await paswd.setValue('Ip-1')
     await wrapper.find('#submit').trigger('click')
-    expect(passwordError.exists())  
+    expect(passwordError.exists())
     expect(passwordError.text()).toBe('Between 6 and 30 characters, at least one uppercase, one lowercase, one figure, a special character among -+!*$@%_')
   })
 })
