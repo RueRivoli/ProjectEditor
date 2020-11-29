@@ -22,7 +22,6 @@ export default {
   },
   computed: {
     ...mapGetters({
-      username: 'GET_USERNAME',
       authenticated: 'GET_AUTH'
     })
   }
@@ -30,6 +29,4 @@ export default {
 }
 </script>
 
-<style>
-
-</style>
+<style></style>

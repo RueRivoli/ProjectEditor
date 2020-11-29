@@ -60,12 +60,11 @@ export default {
     login () {
       this.$refs['registration'].validate((valid) => {
         if (!valid) {
-          console.log('unvalid')
           return false
         }
         let context = this
         AuthService.logUser(this.registration).then(function (data) {
-          console.log('RETOUR LOGIN')
+          console.log('LOGIN RETURN')
           console.log(data)
           if (data.status === 201) {
             localStorage.token = data.data.token

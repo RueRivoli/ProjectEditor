@@ -4,18 +4,18 @@
   cursor:pointer;
 }
 
+/* Table */
 
 tr{
     height:40px;
+    font-weight: 300;
 }
 
 tr:hover{
     opacity: 0.8;
 }
 
-center{
-    text-align: center;
-}
+
 
 
 /* Background colors */
@@ -46,8 +46,27 @@ i.small {
   float:left;
 }
 
+/* Text-position */
+
+ center{
+    text-align: center;
+}
+
 /* Height */
 
 .all_screen{
   height: 90vh;
+}
+/* Width */
+
+.full_width{
+    width:100%;
+}
+
+/* Paddings */
+
+/* Margings */
+  
+.m-b-5{
+    margin-bottom:5px;
 }
