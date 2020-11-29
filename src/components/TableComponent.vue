@@ -1,6 +1,6 @@
 <template>
     <div>
-      <div style="">
+      <div>
            <el-row class="m-b-5 float-l">
                 <el-button id="refresh" size="mini" @click="getList()" round><i class="material-icons mini">refresh</i>Refresh</el-button>
             </el-row>
@@ -12,7 +12,7 @@
                   <th class="center" style="width:30vw;">Update time</th>
                 </tr>
             </thead>
-            <tbody style="">
+            <tbody>
                 <template v-for="(pj, index) in projectDisplayed">
                     <tr class="opacity" :key="index" :class="{'aliceblue' : index % 2 === 0, 'antiquewhite': index % 2 === 1 }">
                       <td class="center" style="width:10vw"  @click="editName(pj, index)">
@@ -139,7 +139,4 @@ table thead, table tbody tr {
   table-layout: fixed;
 }
 
-/* tr{
-  font-weight: 300;
-} */
 </style>
