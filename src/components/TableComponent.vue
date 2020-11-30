@@ -56,6 +56,7 @@ export default {
     this.getList()
   },
   computed: {
+    /* The 10 projects displayed on the screen */
     projectDisplayed: function () {
       let firstProject = this.current_page - 1 + (this.current_page - 1) * 10
       return this.projects.slice(firstProject, firstProject + 10)
@@ -79,10 +80,10 @@ export default {
       })
     },
     async editName (pj, index) {
+      /* Project name can be only between 2 and 40 characters. It can contain only letters,
+       spaces, numbers and characters among -_+!&*()%# */
       const regex = new RegExp(/^[A-Za-z0-9\s-_+!&*()%#]{2,40}$/)
       if ((this.editItem || this.editItem === 0) && this.editItem === index) {
-        // let id = 'name' + index
-        // let newName = document.getElementById(id).value
         if (regex.test(this.newName)) {
           let payload = {
             id: pj.id,
