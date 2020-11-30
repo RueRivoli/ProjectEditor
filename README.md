@@ -13,12 +13,12 @@
 
 
 I decided to use Element ui because it's a library familiar to me that helps me to organize easily a template. 
-I decided to create a store to know if the user is authenticated from every part of the app. 
+I have created a store to know if the user is authenticated from every part of the app. 
 
-I decided to use axios to make http requests to the Phrase API because it's quite easy to handle. Thus, I have created a folder Service where i put my files AuthService.js and ProjectsService.js. In AuthService.js i send a request with axios to authenticate the user and retrieve credentials that i store in the localStorage. In ProjectService.js i write requests to get the list of projects belonging to the user and to update any project. 
+I have choosen axios to make http requests to the Phrase API because it's quite easy to handle. Thus, I have created a folder Service where i put my files AuthService.js and ProjectsService.js. In AuthService.js i send a request with axios to authenticate the user and retrieve credentials that i store in the localStorage. In ProjectService.js i write requests to get the list of projects belonging to the user and to update any project. 
 In the method defaultsHeaders, i retrieve credentials from localStorage to include it in requests. 
 
-I decided to write a single file for styling: globalstyle.css and to place css properties in the components scoped style part when necessary. To test my components, i have used the test runner Jest.
+I have used a single file for styling: globalstyle.css and I have placed css properties in the components scoped style part when necessary. To test my components, i have used the test runner Jest.
 
 
 # To install 
