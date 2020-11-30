@@ -1,16 +1,16 @@
 # project_editor
 
-> Project Editor 
+> Vue.js 2.5.2 
 
-Vue.js 2.5.2 
+> Element ui 2.14.1 
 
-Element ui 2.14.1 
+> Axios 0.21.0 
 
-Axios 0.21.0 
+> Vuex 3.5.1 
 
-Vuex 3.5.1 
+> Jest 22.0.4
 
-Jest 22.0.4
+
 
 I decided to use Element ui because it's a library familiar to me that helps me to organize easily a template. 
 I decided to create a store to know if the user is authenticated from every part of the app. 
@@ -21,7 +21,7 @@ In the method defaultsHeaders, i retrieve credentials from localStorage to inclu
 I decided to write a single file for styling: globalstyle.css and to place css properties in the components scoped style part when necessary. To test my components, i have used the test runner Jest.
 
 
-## To install 
+# To install 
 
 git clone https://github.com/RueRivoli/ProjectEditor.git
 
@@ -31,7 +31,8 @@ npm install
 
 npm run dev
 
-# To test 
+## To test
+
 npm run unit
 
 
