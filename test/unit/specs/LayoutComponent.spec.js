@@ -15,7 +15,7 @@ const tableComponent = {
   template: '<table id="table"></table>'
 }
 
-describe('When users is logged out', () => {
+describe('When user is logged out', () => {
   let getters = {
     GET_AUTH: (state) => false
   }
@@ -28,7 +28,6 @@ describe('When users is logged out', () => {
     store,
     localVue
   })
-  console.log(wrapper.html())
   const msg = wrapper.find('#message')
   const header = wrapper.find('#header')
   it('The header is present', () => {
@@ -55,7 +54,6 @@ describe('When user is logged in', () => {
     store,
     localVue
   })
-  console.log(wrapper.html())
   const table = wrapper.find('table')
   const header = wrapper.find('#header')
   const main = wrapper.find('.el-main')

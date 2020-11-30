@@ -1,40 +1,52 @@
+/* Header */
+
+.header{
+  margin-bottom:5px;
+  height:7vh !important;
+  line-height:7vh;
+  background-color:#409EFF;
+  text-align:right;
+  color:white;
+}
+
 /* cursor */
 
 .pointer:hover{
-  cursor:pointer;
+cursor:pointer;
 }
 
 /* Table */
 
 tr{
-    height:40px;
-    font-weight: 300;
+  height:40px;
+  font-weight: 300;
 }
 
 tr:hover{
-    opacity: 0.8;
+  opacity: 0.8;
 }
-
-
-
 
 /* Background colors */
 
 .aliceblue{
-    background-color: aliceblue;
+  background-color: aliceblue;
 }
 
 .antiquewhite{
-    background-color: antiquewhite;
+  background-color: antiquewhite;
 }
 
 /* Icones */
 
-i.big {font-size: 1.5em;}
+i.big {
+  font-size: 1.5em;
+}
+
 i.mini {
-    font-size: 0.8em;
-    margin-right:2px;
-  }
+  font-size: 0.8em;
+  margin-right:2px;
+}
+
 i.small {
   font-size: 1.2em;
   margin-right:2px;
@@ -48,8 +60,8 @@ i.small {
 
 /* Text-position */
 
- center{
-    text-align: center;
+center{
+  text-align: center;
 }
 
 /* Height */
@@ -57,16 +69,17 @@ i.small {
 .all_screen{
   height: 90vh;
 }
+
 /* Width */
 
 .full_width{
-    width:100%;
+  width:100%;
 }
 
 /* Paddings */
 
 /* Margings */
-  
+
 .m-b-5{
-    margin-bottom:5px;
+  margin-bottom:5px;
 }

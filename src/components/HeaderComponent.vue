@@ -64,8 +64,6 @@ export default {
         }
         let context = this
         AuthService.logUser(this.registration).then(function (data) {
-          console.log('LOGIN RETURN')
-          console.log(data)
           if (data.status === 201) {
             localStorage.token = data.data.token
             context.$store.commit('AUTH', true)
@@ -82,13 +80,4 @@ export default {
 }
 </script>
 
-<style>
-  .header{
-    margin-bottom:5px;
-    height:7vh !important;
-    line-height:7vh;
-    background-color:#409EFF;
-    text-align:right;
-    color:white;
-  }
-</style>
+<style></style>

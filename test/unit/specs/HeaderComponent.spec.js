@@ -38,14 +38,9 @@ describe('When user is logged out', () => {
     expect(header.text()).toContain('Login')
   })
 
-  it('Login part exists', () => {
+  it('Login button exists', () => {
     const login = wrapper.find('#login')
     expect(login.exists())
-  })
-
-  it('Login button exists', () => {
-    const button = wrapper.find('button')
-    expect(button.exists())
   })
 
   it('When clicking on login button, a dialog pops out', async () => {
@@ -60,8 +55,9 @@ describe('Login function is called', () => {
   it('If username/password is empty, username error is displayed', async () => {
     const loginMock = jest.fn(() => Promise.resolve())
     wrapper.setMethods({ login: loginMock })
-    // Click on login button
-    const button = wrapper.find('button')
+    await wrapper.vm.$nextTick()
+    /* Click on login button */
+    const button = wrapper.find('button#login')
     await button.trigger('click')
 
     await wrapper.find('#submit').trigger('click')
@@ -69,9 +65,9 @@ describe('Login function is called', () => {
   })
 })
 
-describe('Cancel button works', () => {
-  it('Cancel button works', async () => {
-    // Click on login button
+describe('Cancel button of dialog works', () => {
+  it('Cancel button removes dialog', async () => {
+    /* Click on login button */
 
     const button = wrapper.find('button')
     await button.trigger('click')
@@ -83,18 +79,18 @@ describe('Cancel button works', () => {
 })
 
 describe('If user enters invalid password', () => {
-  it('If username/password is empty, username error is displayed', async () => {
-    // Click on login button
+  it('Errors are displayed if invalid username/password is noticed', async () => {
+    /* Click on login button */
     const button = wrapper.find('button')
     await button.trigger('click')
 
-    // Fill with empty username and password
+    /* Fill with empty username and password */
     let username = wrapper.find('input[type=text]')
     await username.setValue('')
     let paswd = wrapper.find('input[type=password]')
     await paswd.setValue('')
 
-    // Submit Form
+    /*  Submit Form */
     await wrapper.find('#submit').trigger('click')
 
     let errors = wrapper.findAll('.el-form-item__error')
@@ -105,35 +101,35 @@ describe('If user enters invalid password', () => {
     expect(passwordError.exists())
     expect(passwordError.text()).toBe('Please enter a password')
 
-    // if password contains not any capital letter
+    /* if password contains not any capital letter */
     await username.setValue('testusername')
     await paswd.setValue('incorrectpassword-1')
     await wrapper.find('#submit').trigger('click')
     expect(passwordError.exists())
     expect(passwordError.text()).toBe('Between 6 and 30 characters, at least one uppercase, one lowercase, one figure, a special character among -+!*$@%_')
 
-    // if password contains no special characters
+    /* if password contains no special characters */
     await username.setValue('Username')
     await paswd.setValue('IncorrectPasswordWithNoSpecialCharacter1')
     await wrapper.find('#submit').trigger('click')
     expect(passwordError.exists())
     expect(passwordError.text()).toBe('Between 6 and 30 characters, at least one uppercase, one lowercase, one figure, a special character among -+!*$@%_')
 
-    // if password contains no lower case characters
+    /* if password contains no lower case characters */
     await username.setValue('Username')
     await paswd.setValue('INCORRECTPASSWORD-1')
     await wrapper.find('#submit').trigger('click')
     expect(passwordError.exists())
     expect(passwordError.text()).toBe('Between 6 and 30 characters, at least one uppercase, one lowercase, one figure, a special character among -+!*$@%_')
 
-    // if password contains not a number
+    /* if password contains not a number */
     await username.setValue('Username')
     await paswd.setValue('IncorrectPassword-')
     await wrapper.find('#submit').trigger('click')
     expect(passwordError.exists())
     expect(passwordError.text()).toBe('Between 6 and 30 characters, at least one uppercase, one lowercase, one figure, a special character among -+!*$@%_')
 
-    // if password is too short
+    /* if password is too short */
     await username.setValue('Username')
     await paswd.setValue('Ip-1')
     await wrapper.find('#submit').trigger('click')

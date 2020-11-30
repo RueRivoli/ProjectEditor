@@ -1,34 +1,34 @@
 <template>
     <div>
-      <div style="">
-           <el-row class="m-b-5 float-l">
-                <el-button id="refresh" size="mini" @click="getList()" round><i class="material-icons mini">refresh</i>Refresh</el-button>
-            </el-row>
-          <table class="full_width" style="height:70vh;">
-            <thead>
-                <tr id="header" class="head">
-                  <th class="center" style="width:10vw">Actions</th>
-                  <th class="center" style="width:40vw;">Project Name</th>
-                  <th class="center" style="width:30vw;">Update time</th>
-                </tr>
-            </thead>
-            <tbody style="">
-                <template v-for="(pj, index) in projectDisplayed">
-                    <tr class="opacity" :key="index" :class="{'aliceblue' : index % 2 === 0, 'antiquewhite': index % 2 === 1 }">
-                      <td class="center" style="width:10vw"  @click="editName(pj, index)">
-                          <i v-if="editItem !== index" class="material-icons small pointer">edit</i>
-                          <i v-else class="material-icons small pointer">save</i>
-                      </td>
-                      <td class="center" style="width:40vw;">
-                        <span v-if="editItem === index">
-                          <el-input :id="`name`+ `${index}`" placeholder="" size="mini" style="width:250px;" v-model="newName"></el-input>
-                        </span>
-                        <span v-else>{{ pj.name }}</span>
-                      </td>
-                       <td class="center" style="width:30vw;">{{ pj.updated_at | format }}</td>
-                    </tr>
-                </template>
-            </tbody>
+      <div>
+        <el-row class="m-b-5 float-l">
+          <el-button id="refresh" size="mini" @click="getList()" round><i class="material-icons mini">refresh</i>Refresh</el-button>
+        </el-row>
+        <table class="full_width" style="height:70vh;">
+          <thead>
+            <tr id="header" class="head">
+              <th class="center" style="width:10vw">Actions</th>
+              <th class="center" style="width:40vw;">Project Name</th>
+              <th class="center" style="width:30vw;">Update time</th>
+            </tr>
+          </thead>
+          <tbody>
+            <template v-for="(pj, index) in projectDisplayed">
+              <tr class="opacity" :key="index" :class="{'aliceblue' : index % 2 === 0, 'antiquewhite': index % 2 === 1 }">
+                <td class="center" style="width:10vw"  @click="editName(pj, index)">
+                  <i v-if="editItem !== index" class="material-icons small pointer">edit</i>
+                  <i v-else class="material-icons small pointer">save</i>
+                </td>
+                <td class="center" style="width:40vw;">
+                  <span v-if="editItem === index">
+                    <el-input :id="`name`+ `${index}`" placeholder="" size="mini" style="width:250px;" v-model="newName"></el-input>
+                  </span>
+                  <span v-else>{{ pj.name }}</span>
+                </td>
+                <td class="center" style="width:30vw;">{{ pj.updated_at | format }}</td>
+              </tr>
+            </template>
+          </tbody>
         </table>
     </div>
     <div class="full_width center" style="margin:2vh;">
@@ -139,7 +139,4 @@ table thead, table tbody tr {
   table-layout: fixed;
 }
 
-/* tr{
-  font-weight: 300;
-} */
 </style>
